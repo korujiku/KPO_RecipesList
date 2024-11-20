@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content_header">Рецепты</div>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-between align-items-center">
+        <form action="#" th:action="@{/recipe/search/}" class="d-flex">
+            <input class="form-control m-1" type="text" name="request" placeholder="Введите имя..." required="true"/>
+            <button class="btn btn-primary m-1" type="submit">Найти</button>
+        </form>
+        <div class="d-flex justify-content-around">
+            <a type="button" class="btn btn-success m-1"
+               th:href="@{/recipe/edit}">
+                Добавить рецепт
+            </a>
+        </div>
+    </div>
+    <hr class="border border-0 bg-white"/>
+    <div class="m-3 container d-flex flex-wrap justify-content-around" id="tbl-items">
+        <div class="bg-white p-2 text-primary border border-0 rounded-4 mb-2 d-flex flex-wrap justify-content-around"
+             th:each="recipe, iterator: ${recipes}">
+            <ul class="list-unstyled">
+                <li class="text-decoration-none" th:text="${recipe.id}"></li>
+                <li class="text-decoration-none" th:text="'Создан юзером: '+${recipe.user}"></li>
+                <li class="text-decoration-none">
+                    <a class="text-primary" th:href="@{/recipe/page/{id}(id=${recipe.id})}" th:text="${recipe.name}"></a>
+                </li>
+                <li class="text-decoration-none">
+                    <a type="button" class="m-1 btn btn-secondary" th:href="@{/recipe/{id}/edit/(id=${recipe.id})}">
+                        Изменить
+                    </a>
+                </li>
+                <li>
+                    <a type="button" class="m-1 btn btn-danger"
+                       th:attr="onclick=|confirm('Удалить рецепт?') && document.getElementById('remove-${recipe.id}').click()|">
+                        Удалить
+                    </a>
+                    <form th:action="@{/recipe/{id}/delete/(id=${recipe.id})}" method="post">
+                        <button th:id="'remove-' + ${recipe.id}" type="submit" style="display: none">
+                            Удалить
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
