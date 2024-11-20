@@ -104,4 +104,15 @@ public class RecipeMvcController {
         recipeService.updateRecipe(recipeDto);
         return "redirect:/recipe/" + id + "/edit";
     }
+
+    @PostMapping("/{id}/delete")
+    public String deleteRecipe(@PathVariable Long id, Principal principal) {
+        Recipe recipe = recipeService.findRecipe(id);
+        User user = userService.findByLogin(principal.getName());
+        if(!Objects.equals(recipe.getUser().getId(), user.getId())&&user.getRole()==UserRole.USER){
+            return "redirect:/recipe";
+        }
+        recipeService.deleteRecipe(id);
+        return "redirect:/recipe";
+    }
 }
