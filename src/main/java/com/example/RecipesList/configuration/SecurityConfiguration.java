@@ -1,6 +1,8 @@
 package com.example.RecipesList.configuration;
 
+import com.example.RecipesList.recipe.controller.UserSignupMvcController;
 import com.example.RecipesList.recipe.model.UserRole;
+import com.example.RecipesList.recipe.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
