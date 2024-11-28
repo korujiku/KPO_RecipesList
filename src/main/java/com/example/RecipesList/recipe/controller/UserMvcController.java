@@ -1,10 +1,9 @@
 package com.example.RecipesList.recipe.controller;
 
 import com.example.RecipesList.recipe.dto.UserDto;
-import com.example.RecipesList.recipe.model.User;
+import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,16 +23,16 @@ public class UserMvcController {
     @GetMapping(value = "/profile/{id}")
     public String getUser(@PathVariable Long id,
                           Model model) {
-        User user = userService.findUser(id);
-        return "user-profile";
+        UserModel userModel = userService.findUser(id);
+        return "userModel-profile";
     }
 
     @GetMapping(value = "/profile/{id}/edit")
     public String editUser(@PathVariable Long id,
                            Model model) {
-        User user = userService.findUser(id);
-        model.addAttribute("userDto", new UserDto(user));
-        return "user-profile-edit";
+        UserModel userModel = userService.findUser(id);
+        model.addAttribute("userDto", new UserDto(userModel));
+        return "userModel-profile-edit";
     }
 
     @PostMapping(value = "/{id}")
@@ -52,8 +51,8 @@ public class UserMvcController {
 
     @PostMapping("/profile/delete")
     public String deleteUser(Principal principal) {
-        User user = userService.findByLogin(principal.getName());
-        userService.deleteUser(user.getId());
+        UserModel userModel = userService.findByLogin(principal.getName());
+        userService.deleteUser(userModel.getId());
         return "redirect:/login";
     }
 }

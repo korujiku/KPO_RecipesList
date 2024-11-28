@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ru"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{default}" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<div layout:fragment="content_header" th:text="Информация о рецепте"></div>
+<div layout:fragment="content_header" th:text="'Информация о рецепте'"></div>
 <div layout:fragment="content">
   <div id="recipe-info-div" class="justify-content-center bg-light text-dark border border-0 rounded-2 container gap-5 d-flex flex-row">
     <div class="p-5 text-center">
-      <li class="text-decoration-none" th:text="'Добавлен пользователем: '+${recipeDto.user}"></li>
+      <li class="text-decoration-none" th:text="'Автор рецепта: '+${recipeDto.userModel}"></li>
       <p id="recipe-name" class="fw-bolder fs-5 ps-2" th:text="${recipeDto.name}"></p>
       <p class="fw-bolder fs-5 ps-2" th:text="'Ингридиенты: ' + ${recipeDto.ingridients}"></p>
       <p class="fw-bolder fs-5 ps-2" th:text="'Приготовление: ' + ${recipeDto.preparing}"></p>

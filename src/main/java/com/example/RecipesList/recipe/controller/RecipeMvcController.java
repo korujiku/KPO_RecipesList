@@ -2,7 +2,7 @@ package com.example.RecipesList.recipe.controller;
 
 import com.example.RecipesList.recipe.dto.RecipeDto;
 import com.example.RecipesList.recipe.model.Recipe;
-import com.example.RecipesList.recipe.model.User;
+import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.model.UserRole;
 import com.example.RecipesList.recipe.service.RecipeService;
 import com.example.RecipesList.recipe.service.UserService;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
@@ -52,9 +51,9 @@ public class RecipeMvcController {
             return "create-recipe";
         } else {
             Recipe recipe = recipeService.findRecipe(id);
-            User user = userService.findByLogin(principal.getName());
+            UserModel userModel = userService.findByLogin(principal.getName());
 
-            if(!Objects.equals(recipe.getUser().getId(),user.getId()) && user.getRole() == UserRole.USER){
+            if(!Objects.equals(recipe.getUserModel().getId(), userModel.getId()) && userModel.getRole() == UserRole.USER){
                 return "redirect:/recipe";
             }
             model.addAttribute("recipeId", id);
@@ -96,8 +95,8 @@ public class RecipeMvcController {
                                 @ModelAttribute @Valid RecipeDto recipeDto,
                                 Model model, Principal principal) {
         Recipe recipe = recipeService.findRecipe(id);
-        User user = userService.findByLogin(principal.getName());
-        if(!Objects.equals(recipe.getUser().getId(), user.getId())&&user.getRole()==UserRole.USER){
+        UserModel userModel = userService.findByLogin(principal.getName());
+        if(!Objects.equals(recipe.getUserModel().getId(), userModel.getId())&& userModel.getRole()==UserRole.USER){
             return "/recipe";
         }
         recipeDto.setId(id);
@@ -108,8 +107,8 @@ public class RecipeMvcController {
     @PostMapping("/{id}/delete")
     public String deleteRecipe(@PathVariable Long id, Principal principal) {
         Recipe recipe = recipeService.findRecipe(id);
-        User user = userService.findByLogin(principal.getName());
-        if(!Objects.equals(recipe.getUser().getId(), user.getId())&&user.getRole()==UserRole.USER){
+        UserModel userModel = userService.findByLogin(principal.getName());
+        if(!Objects.equals(recipe.getUserModel().getId(), userModel.getId())&& userModel.getRole()==UserRole.USER){
             return "redirect:/recipe";
         }
         recipeService.deleteRecipe(id);

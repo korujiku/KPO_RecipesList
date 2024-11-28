@@ -3,7 +3,7 @@ package com.example.RecipesList.recipe.service;
 import com.example.RecipesList.recipe.dto.RecipeDto;
 import com.example.RecipesList.recipe.exception.RecipeNotFoundException;
 import com.example.RecipesList.recipe.model.Recipe;
-import com.example.RecipesList.recipe.model.User;
+import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.repository.RecipeRepository;
 import com.example.RecipesList.util.validation.ValidatorUtil;
 import jakarta.transaction.Transactional;
@@ -29,8 +29,8 @@ public class RecipeService {
     @Transactional
     public Recipe addRecipe(Long userId, RecipeDto recipeDto) {
         final Recipe recipe = new Recipe(recipeDto);
-        final User user = userService.findUser(userId);
-        recipe.setUser(user);
+        final UserModel userModel = userService.findUser(userId);
+        recipe.setUserModel(userModel);
         validatorUtil.validate(recipe);
         return recipeRepository.save(recipe);
     }

@@ -1,0 +1,40 @@
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; ожидалось "identifier"
+Syntax error in SQL statement "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; expected "identifier"; SQL statement:
+create table userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id)) [42001-214]
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; expected "identifier"; SQL statement:
+alter table if exists userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb [42001-214]
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; expected "identifier"; SQL statement:
+alter table if exists userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login) [42001-214]
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; expected "identifier"; SQL statement:
+alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references userModel [42001-214]
+2024-11-28 10:45:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.login,u1_0.password,u1_0.role from userModel u1_0 where upper(u1_0.login)=upper(?) [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; ожидалось "identifier"
+Syntax error in SQL statement "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; expected "identifier"; SQL statement:
+create table userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id)) [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; expected "identifier"; SQL statement:
+alter table if exists userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; expected "identifier"; SQL statement:
+alter table if exists userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login) [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; expected "identifier"; SQL statement:
+alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references userModel [42001-214]
+2024-11-28 10:51:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.login,u1_0.password,u1_0.role from userModel u1_0 where upper(u1_0.login)=upper(?) [42001-214]

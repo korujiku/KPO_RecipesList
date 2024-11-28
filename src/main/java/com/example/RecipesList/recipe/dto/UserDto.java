@@ -1,6 +1,6 @@
 package com.example.RecipesList.recipe.dto;
 
-import com.example.RecipesList.recipe.model.User;
+import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.model.UserRole;
 
 import java.util.ArrayList;
@@ -15,14 +15,14 @@ public class UserDto {
 
     public UserDto() {}
 
-    public UserDto(User user) {
-        this.id = user.getId();
-        this.login = user.getLogin();
-        this.password = user.getPassword();
+    public UserDto(UserModel userModel) {
+        this.id = userModel.getId();
+        this.login = userModel.getLogin();
+        this.password = userModel.getPassword();
         this.recipes = new ArrayList<>();
-        this.role = user.getRole();
-        if (user.getRecipes() != null) {
-            recipes = user.getRecipes().stream()
+        this.role = userModel.getRole();
+        if ( userModel.getRecipes() != null) {
+            recipes = userModel.getRecipes().stream()
                     .map(RecipeDto::new).toList();
         }
     }

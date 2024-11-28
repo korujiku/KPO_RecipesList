@@ -8,7 +8,7 @@ public class RecipeDto {
     private String ingridients;
     private String preparing;
     private Long userId;
-    private String user;
+    private String userModel;
 
     public RecipeDto() {}
 
@@ -17,8 +17,8 @@ public class RecipeDto {
         this.name = recipe.getName();
         this.ingridients = recipe.getIngridients();
         this.preparing = recipe.getPreparing();
-        this.userId = recipe.getUser().getId();
-        this.user = recipe.getUser().getLogin();
+        this.userId = recipe.getUserModel().getId();
+        this.userModel = recipe.getUserModel().getLogin();
     }
 
     public Long getUserId(){
@@ -53,11 +53,11 @@ public class RecipeDto {
         this.preparing = preparing;
     }
 
-    public void setUser(String user){
-        this.user = user;
+    public void setUserModel(String user){
+        this.userModel = user;
     }
 
-    public String getUser(){
-        return user;
+    public String getUserModel(){
+        return userModel;
     }
 }

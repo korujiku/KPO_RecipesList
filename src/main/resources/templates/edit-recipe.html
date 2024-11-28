@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ru"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{default}" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 </head>
 <body>
-<div layout:fragment="content_header" th:text="Редактирование рецепта"></div>
+<div layout:fragment="content_header" th:text="'Редактирование рецепта'"></div>
 <div layout:fragment="content">
     <form action="#" th:action="@{/recipe/{id}(id=${id})}" th:object="${recipeDto}" method="post">
         <div class="mb-3">

@@ -70,6 +70,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/css/**")
                 .requestMatchers("/js/**")
                 .requestMatchers("/templates/**")
-                .requestMatchers("/webjars/**");
+                .requestMatchers("/webjars/**")
+                .requestMatchers("/error");
     }
 }

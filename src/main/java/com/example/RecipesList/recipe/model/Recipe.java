@@ -16,8 +16,8 @@ public class Recipe {
     private String name;
 
     @ManyToOne( fetch = FetchType.EAGER )
-    @JoinColumn( name = "user_fk" )
-    private User user;
+    @JoinColumn( name = "userModel_fk" )
+    private UserModel userModel;
 
     @NotBlank( message = "Recipe's ingridients can't be null or empty" )
     private String ingridients;
@@ -39,14 +39,14 @@ public class Recipe {
         this.preparing = recipeDto.getPreparing();
     }
 
-    public User getUser() {
-        return user;
+    public UserModel getUserModel() {
+        return userModel;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-        if (!user.getRecipes().contains(this)) {
-            user.setRecipe(this);
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+        if (!userModel.getRecipes().contains(this)) {
+            userModel.setRecipe(this);
         }
     }
 

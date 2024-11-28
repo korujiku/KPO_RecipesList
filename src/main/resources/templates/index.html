@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
-
+<div layout:fragment="content_header">Главная</div>
+<div layout:fragment="content">
+    <div class="container d-grid gap-5 mt-1 d-flex flex-row justify-content-center" id="blocks">
+        <div class="col-5 mt-5 ms-5 me-5 bg-white border border-0 rounded-4" id="main_desc">
+            <p class="p-3 fw-bold text-primary pt-4 fs-4">Справочник рецептов.</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

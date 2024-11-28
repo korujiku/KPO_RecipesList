@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class UserModel {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     private Long id;
@@ -21,31 +21,31 @@ public class User {
 
     @Column( nullable = false, length = 64 )
     @NotBlank( message = "password can't be null or empty" )
-    @Size( min = 6, max = 64 )
+    @Size( min = 5, max = 64 )
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = {CascadeType.MERGE,CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userModel", cascade = {CascadeType.MERGE,CascadeType.REMOVE})
     private List<Recipe> recipes;
 
     private UserRole role;
 
-    public User(){}
+    public UserModel(){}
 
-    public User(String login, String password){
+    public UserModel(String login, String password){
         this.login = login;
         this.password = password;
         this.recipes = new ArrayList<>();
         this.role = UserRole.USER;
     }
 
-    public User(String login, String password, UserRole role){
+    public UserModel(String login, String password, UserRole role){
         this.login = login;
         this.password = password;
         this.recipes = new ArrayList<>();
         this.role = role;
     }
 
-    public User(UserSignupDto userSignupDto){
+    public UserModel(UserSignupDto userSignupDto){
         this.login = userSignupDto.getLogin();
         this.password = userSignupDto.getPassword();
         this.role = UserRole.USER;
@@ -55,8 +55,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
+        UserModel userModel = (UserModel) o;
+        return Objects.equals(id, userModel.id);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User {" +
+        return "UserModel {" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
@@ -102,7 +102,7 @@ public class User {
     }
 
     public void setRecipe(Recipe recipe) {
-        if (recipe.getUser().equals(this)) {
+        if (recipe.getUserModel().equals(this)) {
             this.recipes.add(recipe);
         }
     }
