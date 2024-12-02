@@ -7,7 +7,14 @@
 <body>
 <div layout:fragment="content_header" th:text="'Редактирование рецепта'"></div>
 <div layout:fragment="content">
-    <form action="#" th:action="@{/recipe/{id}(id=${id})}" th:object="${recipeDto}" method="post">
+    <form action="#" th:action="@{/recipe/{id}(id=${id})}" th:object="${recipeDto}"
+          enctype="multipart/form-data"
+          method="post">
+        <div class="mb-3">
+            <label for="multipartFile" class="form-label">Фото</label>
+            <input type="file" class="form-control" id="multipartFile"
+                   th:name="multipartFile" />
+        </div>
         <div class="mb-3">
             <label for="name" class="form-label">Имя</label>
             <input type="text" class="form-control" id="name"

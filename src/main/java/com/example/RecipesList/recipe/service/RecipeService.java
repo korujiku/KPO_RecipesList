@@ -57,6 +57,7 @@ public class RecipeService {
         currentRecipe.setName(recipeDto.getName());
         currentRecipe.setIngridients(recipeDto.getIngridients());
         currentRecipe.setPreparing(recipeDto.getPreparing());
+        currentRecipe.setImage(recipeDto.getImage().getBytes());
         validatorUtil.validate(currentRecipe);
         return recipeRepository.save(currentRecipe);
     }

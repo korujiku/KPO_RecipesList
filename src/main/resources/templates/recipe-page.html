@@ -9,11 +9,12 @@
 <div layout:fragment="content_header" th:text="'Информация о рецепте'"></div>
 <div layout:fragment="content">
   <div id="recipe-info-div" class="justify-content-center bg-light text-dark border border-0 rounded-2 container gap-5 d-flex flex-row">
+    <img id="recipe-image" th:src="${recipeDto.image}" class="pagePicture m-5 d-flex ms-3 justify-content-center" />
     <div class="p-5 text-center">
       <li class="text-decoration-none" th:text="'Автор рецепта: '+${recipeDto.userModel}"></li>
       <p id="recipe-name" class="fw-bolder fs-5 ps-2" th:text="${recipeDto.name}"></p>
       <p class="fw-bolder fs-5 ps-2" th:text="'Ингридиенты: ' + ${recipeDto.ingridients}"></p>
-      <p class="fw-bolder fs-5 ps-2" th:text="'Приготовление: ' + ${recipeDto.preparing}"></p>
+      <p class="fw-bolder fs-5 ps-2" th:text="'Способ приготовления: ' + ${recipeDto.preparing}"></p>
       <div class="mb-3">
         <a class="btn btn-secondary button-fixed" th:href="@{/recipe}">
           Назад

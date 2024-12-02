@@ -5,9 +5,29 @@
 <head>
 </head>
 <body>
+<div layout:fragment="content_header" th:text="'Редактирование данных профиля'"></div>
 <div layout:fragment="content">
-  <div><span th:text="${error}"></span></div>
-  <a href="/">На главную</a>
+  <form action="#" th:action="@{/user/{id}(id=${id})}" th:object="${userDto}"
+        method="post">
+    <div class="mb-3">
+      <label for="login" class="form-label">Имя</label>
+      <input type="text" class="form-control" id="login"
+             th:field="${userDto.login}" />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Пароль</label>
+      <input type="text" class="form-control" id="password"
+             th:field="${userDto.password}" />
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary button-fixed">
+        <span>Обновить</span>
+      </button>
+      <a class="btn btn-secondary button-fixed" th:href="@{/recipe}">
+        Назад
+      </a>
+    </div>
+  </form>
 </div>
 </body>
 </html>

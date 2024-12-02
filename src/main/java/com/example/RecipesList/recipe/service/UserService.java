@@ -83,7 +83,7 @@ public class UserService implements UserDetailsService {
     public UserModel updateUser(Long id, String login, String password) {
         final UserModel currentUserModel = findUser(id);
         currentUserModel.setLogin(login);
-        currentUserModel.setPassword(password);
+        currentUserModel.setPassword(passwordEncoder.encode(password));
         validatorUtil.validate(currentUserModel);
         return userRepository.save(currentUserModel);
     }

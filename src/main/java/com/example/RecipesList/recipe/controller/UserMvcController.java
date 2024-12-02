@@ -1,6 +1,8 @@
 package com.example.RecipesList.recipe.controller;
 
+import com.example.RecipesList.recipe.dto.RecipeDto;
 import com.example.RecipesList.recipe.dto.UserDto;
+import com.example.RecipesList.recipe.model.Recipe;
 import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.service.UserService;
 import jakarta.validation.Valid;
@@ -10,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -20,11 +24,18 @@ public class UserMvcController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/profile/{id}")
-    public String getUser(@PathVariable Long id,
+    @GetMapping(value = "/profile")
+    public String getUser(Principal principal,
                           Model model) {
-        UserModel userModel = userService.findUser(id);
-        return "userModel-profile";
+        UserModel userModel = userService.findByLogin(principal.getName());
+        List<RecipeDto> recipes = new ArrayList<>();
+
+        for ( Recipe recipe : userModel.getRecipes()){
+            recipes.add(new RecipeDto(recipe));
+        }
+        model.addAttribute("userDto", new UserDto(userModel));
+        model.addAttribute("recipes", recipes);
+        return "user-profile";
     }
 
     @GetMapping(value = "/profile/{id}/edit")
@@ -32,7 +43,7 @@ public class UserMvcController {
                            Model model) {
         UserModel userModel = userService.findUser(id);
         model.addAttribute("userDto", new UserDto(userModel));
-        return "userModel-profile-edit";
+        return "edit-profile";
     }
 
     @PostMapping(value = "/{id}")
@@ -42,11 +53,11 @@ public class UserMvcController {
                            Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "user-profile-edit";
+            return "edit-profile";
         }
         userService.updateUser(id, userDto.getLogin(), userDto.getPassword());
 
-        return "redirect:/user/profile/" + id;
+        return "redirect:/user/profile";
     }
 
     @PostMapping("/profile/delete")

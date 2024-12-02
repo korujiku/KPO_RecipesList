@@ -25,18 +25,23 @@ public class Recipe {
     @NotBlank( message = "Recipe's preparing info can't be null or empty" )
     private String preparing;
 
+    @Lob
+    private byte[] image;
+
     public Recipe() {}
 
-    public Recipe(String name, String ingridients, String preparing) {
+    public Recipe(String name, String ingridients, String preparing, byte[] image) {
         this.name = name;
         this.ingridients = ingridients;
         this.preparing = preparing;
+        this.image = image;
     }
 
     public Recipe(RecipeDto recipeDto){
         this.name = recipeDto.getName();
         this.ingridients = recipeDto.getIngridients();
         this.preparing = recipeDto.getPreparing();
+        this.image = recipeDto.getImage().getBytes();
     }
 
     public UserModel getUserModel() {
@@ -77,6 +82,14 @@ public class Recipe {
 
     public void setPreparing(String preparing) {
         this.preparing = preparing;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     // ![Properties]

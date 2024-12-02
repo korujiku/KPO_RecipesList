@@ -20,15 +20,15 @@
         </div>
     </div>
     <hr class="border border-0 bg-white"/>
-    <div class="m-3 container d-flex flex-wrap justify-content-around" id="tbl-items">
-        <div class="bg-white p-2 text-primary border border-0 rounded-4 mb-2 d-flex flex-wrap justify-content-around"
+    <div class="m-3 container d-flex flex-wrap align-items-center justify-content-around" id="tbl-items">
+        <div id="itemCard" class="bg-white p-2 text-primary border border-0 rounded-4 mb-2 d-flex flex-wrap justify-content-around"
              th:each="recipe, iterator: ${recipes}">
+            <img class="pictureItem me-3 border border-0 rounded-2" th:src="${recipe.image}" alt="${recipe.name}" align="left"/>
             <ul class="list-unstyled">
-                <li class="text-decoration-none" th:text="${recipe.id}"></li>
-                <li class="text-decoration-none" th:text="'Автор рецепта: '+${recipe.userModel}"></li>
                 <li class="text-decoration-none">
                     <a class="text-primary" th:href="@{/recipe/{id}/page(id=${recipe.id})}" th:text="${recipe.name}"></a>
                 </li>
+                <li class="text-decoration-none" th:text="'Автор рецепта: '+${recipe.userModel}"></li>
                 <li class="text-decoration-none">
                     <a type="button" class="m-1 btn btn-secondary" th:href="@{/recipe/{id}/edit(id=${recipe.id})}">
                         Изменить

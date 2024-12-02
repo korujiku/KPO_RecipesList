@@ -1,0 +1,83 @@
+html, body {
+    background: #6173ab;
+}
+
+.btn {
+    width: 100px;
+    display: inline;
+}
+
+#itemCard {
+    width: 250px;
+}
+
+.pictureItem {
+    width: 150px;
+    height: 150px;
+}
+
+.pagePicture {
+    width: 350px;
+    height: 350px;
+}
+
+.content {
+    min-height: calc(100vh - 25.1vh);
+    background: #7d8eb4;
+}
+
+.content_header {
+    margin: -1.5em -1.5em 0em -1.5em;
+    background-color: #bdcce5;
+}
+
+form input {
+    max-width: 300px;
+}
+
+form select {
+    max-width: 300px;
+}
+
+table tbody tr td {
+    border: 0px !important;
+}
+
+.table {
+    margin: 0 auto;
+}
+
+header {
+    background: #1a1c20;
+}
+
+header a {
+    color: #c2c2c2;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.pagination a {
+    color: white;
+    float: left;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: gray;
+    color: white;
+    border-radius: 2px;
+}

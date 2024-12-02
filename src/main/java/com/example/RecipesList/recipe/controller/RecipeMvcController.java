@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,18 +76,21 @@ public class RecipeMvcController {
 
     @PostMapping(value = {"/"})
     public String saveRecipe(@PathVariable(required = false) Long id,
+                             @RequestParam("multipartFile") MultipartFile multipartFile,
                                 @ModelAttribute @Valid RecipeDto recipeDto,
                                 BindingResult bindingResult,
-                                Model model, Principal principal) {
+                                Model model, Principal principal) throws IOException {
         Long userId = userService.findByLogin(principal.getName()).getId();
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "edit-recipe";
         }
         if (id == null || id <= 0) {
+            recipeDto.setImage("data:" + multipartFile.getContentType() + ";base64," + Base64.getEncoder().encodeToString(multipartFile.getBytes()));
             recipeService.addRecipe(userId,recipeDto);
         } else {
             recipeDto.setId(id);
+            recipeDto.setImage("data:" + multipartFile.getContentType() + ";base64," + Base64.getEncoder().encodeToString(multipartFile.getBytes()));
             recipeService.updateRecipe(recipeDto);
         }
         return "redirect:/recipe";
@@ -93,13 +99,15 @@ public class RecipeMvcController {
     @PostMapping(value = "/{id}")
     public String editRecipe(@PathVariable Long id,
                                 @ModelAttribute @Valid RecipeDto recipeDto,
-                                Model model, Principal principal) {
+                                @RequestParam("multipartFile") MultipartFile multipartFile,
+                                Model model, Principal principal) throws IOException {
         Recipe recipe = recipeService.findRecipe(id);
         UserModel userModel = userService.findByLogin(principal.getName());
         if(!Objects.equals(recipe.getUserModel().getId(), userModel.getId())&& userModel.getRole()==UserRole.USER){
             return "/recipe";
         }
         recipeDto.setId(id);
+        recipeDto.setImage("data:" + multipartFile.getContentType() + ";base64," + Base64.getEncoder().encodeToString(multipartFile.getBytes()));
         recipeService.updateRecipe(recipeDto);
         return "redirect:/recipe/" + id + "/edit";
     }
