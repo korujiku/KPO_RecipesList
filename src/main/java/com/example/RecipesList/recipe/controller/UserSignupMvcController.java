@@ -1,6 +1,6 @@
 package com.example.RecipesList.recipe.controller;
 
-import com.example.RecipesList.recipe.model.User;
+import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.model.UserSignupDto;
 import com.example.RecipesList.recipe.service.UserService;
 import jakarta.validation.Valid;
@@ -39,9 +39,9 @@ public class UserSignupMvcController {
             return "signup";
         }
         try {
-            final User user = userService.addUser(
+            final UserModel userModel = userService.addUser(
                     userSignupDto.getLogin(), userSignupDto.getPassword(), userSignupDto.getPasswordConfirm());
-            return "redirect:/login?created=" + user.getLogin();
+            return "redirect:/login?created=" + userModel.getLogin();
         } catch ( ValidationException e) {
             model.addAttribute("errors", e.getMessage());
             return "signup";

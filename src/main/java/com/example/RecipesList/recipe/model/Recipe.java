@@ -16,8 +16,8 @@ public class Recipe {
     private String name;
 
     @ManyToOne( fetch = FetchType.EAGER )
-    @JoinColumn( name = "user_fk" )
-    private User user;
+    @JoinColumn( name = "userModel_fk" )
+    private UserModel userModel;
 
     @NotBlank( message = "Recipe's ingridients can't be null or empty" )
     private String ingridients;
@@ -25,28 +25,33 @@ public class Recipe {
     @NotBlank( message = "Recipe's preparing info can't be null or empty" )
     private String preparing;
 
+    @Lob
+    private byte[] image;
+
     public Recipe() {}
 
-    public Recipe(String name, String ingridients, String preparing) {
+    public Recipe(String name, String ingridients, String preparing, byte[] image) {
         this.name = name;
         this.ingridients = ingridients;
         this.preparing = preparing;
+        this.image = image;
     }
 
     public Recipe(RecipeDto recipeDto){
         this.name = recipeDto.getName();
         this.ingridients = recipeDto.getIngridients();
         this.preparing = recipeDto.getPreparing();
+        this.image = recipeDto.getImage().getBytes();
     }
 
-    public User getUser() {
-        return user;
+    public UserModel getUserModel() {
+        return userModel;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-        if (!user.getRecipes().contains(this)) {
-            user.setRecipe(this);
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+        if (!userModel.getRecipes().contains(this)) {
+            userModel.setRecipe(this);
         }
     }
 
@@ -77,6 +82,14 @@ public class Recipe {
 
     public void setPreparing(String preparing) {
         this.preparing = preparing;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     // ![Properties]

@@ -1,7 +1,7 @@
 package com.example.RecipesList.recipe.service;
 
 import com.example.RecipesList.recipe.exception.UserNotFoundException;
-import com.example.RecipesList.recipe.model.User;
+import com.example.RecipesList.recipe.model.UserModel;
 import com.example.RecipesList.recipe.model.UserRole;
 import com.example.RecipesList.recipe.model.UserSignupDto;
 import com.example.RecipesList.recipe.repository.UserRepository;
@@ -33,66 +33,66 @@ public class UserService implements UserDetailsService {
         this.validatorUtil = validatorUtil;
     }
 
-    public User findByLogin(String login){
+    public UserModel findByLogin(String login){
         return userRepository.findOneByLoginIgnoreCase(login);
     }
 
     @Transactional
-    public User addUser(String login, String password, String passwordConfirm){
+    public UserModel addUser(String login, String password, String passwordConfirm){
         return createUser(login, password, passwordConfirm, UserRole.USER);
     }
 
     @Transactional
-    public User addUser(UserSignupDto userSignupDto){
+    public UserModel addUser(UserSignupDto userSignupDto){
         if(findByLogin(userSignupDto.getLogin())!=null){
-            throw new ValidationException(String.format("User '%s' already exists", userSignupDto.getLogin()));
+            throw new ValidationException(String.format("UserModel '%s' already exists", userSignupDto.getLogin()));
         }
         if (!Objects.equals(userSignupDto.getPassword(), userSignupDto.getPasswordConfirm())) {
             throw new ValidationException("Passwords not equals");
         }
-        final User user = new User(userSignupDto);
-        validatorUtil.validate(user);
-        return userRepository.save(user);
+        final UserModel userModel = new UserModel(userSignupDto);
+        validatorUtil.validate(userModel);
+        return userRepository.save(userModel);
     }
 
-    public User createUser(String login, String password, String passwordConfirm, UserRole role){
+    public UserModel createUser(String login, String password, String passwordConfirm, UserRole role){
         if (findByLogin(login) != null) {
-            throw new ValidationException(String.format("User '%s' already exists", login));
+            throw new ValidationException(String.format("UserModel '%s' already exists", login));
         }
-        final User user = new User(login, passwordEncoder.encode(password), role);
-        validatorUtil.validate(user);
+        final UserModel userModel = new UserModel(login, passwordEncoder.encode(password), role);
+        validatorUtil.validate(userModel);
         if (!Objects.equals(password, passwordConfirm)) {
             throw new ValidationException("Passwords not equals");
         }
-        return userRepository.save(user);
+        return userRepository.save(userModel);
     }
 
     @Transactional(readOnly = true)
-    public User findUser(Long id) {
-        final Optional<User> user = userRepository.findById(id);
+    public UserModel findUser(Long id) {
+        final Optional<UserModel> user = userRepository.findById(id);
 
         return user.orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @Transactional(readOnly = true)
-    public List<User> findAllUsers() {
+    public List<UserModel> findAllUsers() {
         return userRepository.findAll();
     }
 
     @Transactional
-    public User updateUser(Long id, String login, String password) {
-        final User currentUser = findUser(id);
-        currentUser.setLogin(login);
-        currentUser.setPassword(password);
-        validatorUtil.validate(currentUser);
-        return userRepository.save(currentUser);
+    public UserModel updateUser(Long id, String login, String password) {
+        final UserModel currentUserModel = findUser(id);
+        currentUserModel.setLogin(login);
+        currentUserModel.setPassword(passwordEncoder.encode(password));
+        validatorUtil.validate(currentUserModel);
+        return userRepository.save(currentUserModel);
     }
 
     @Transactional
-    public User deleteUser(Long id) {
-        final User user = findUser(id);
+    public UserModel deleteUser(Long id) {
+        final UserModel userModel = findUser(id);
         userRepository.deleteById(id);
-        return user;
+        return userModel;
     }
 
     @Transactional
@@ -102,11 +102,11 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final User userEntity = findByLogin(username);
-        if (userEntity == null) {
+        final UserModel userModelEntity = findByLogin(username);
+        if ( userModelEntity == null) {
             throw new UsernameNotFoundException(username);
         }
         return new org.springframework.security.core.userdetails.User(
-                userEntity.getLogin(), userEntity.getPassword(), Collections.singleton(userEntity.getRole()));
+                userModelEntity.getLogin(), userModelEntity.getPassword(), Collections.singleton(userModelEntity.getRole()));
     }
 }

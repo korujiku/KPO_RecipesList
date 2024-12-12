@@ -1,0 +1,144 @@
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; ожидалось "identifier"
+Syntax error in SQL statement "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; expected "identifier"; SQL statement:
+create table userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id)) [42001-214]
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; expected "identifier"; SQL statement:
+alter table if exists userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb [42001-214]
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; expected "identifier"; SQL statement:
+alter table if exists userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login) [42001-214]
+2024-11-28 10:45:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; expected "identifier"; SQL statement:
+alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references userModel [42001-214]
+2024-11-28 10:45:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.login,u1_0.password,u1_0.role from userModel u1_0 where upper(u1_0.login)=upper(?) [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; ожидалось "identifier"
+Syntax error in SQL statement "create table [*]userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id))"; expected "identifier"; SQL statement:
+create table userModel (id bigint not null, login varchar(64) not null, password varchar(64) not null, role tinyint check (role between 0 and 1), primary key (id)) [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb"; expected "identifier"; SQL statement:
+alter table if exists userModel drop constraint if exists UKew1hvam8uwaknuaellwhqchhb [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists [*]userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login)"; expected "identifier"; SQL statement:
+alter table if exists userModel add constraint UKew1hvam8uwaknuaellwhqchhb unique (login) [42001-214]
+2024-11-28 10:51:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; ожидалось "identifier"
+Syntax error in SQL statement "alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references [*]userModel"; expected "identifier"; SQL statement:
+alter table if exists recipe add constraint FKbvydjcc2kbfarpkur1v579qho foreign key (user_fk) references userModel [42001-214]
+2024-11-28 10:51:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.login,u1_0.password,u1_0.role from [*]userModel u1_0 where upper(u1_0.login)=upper(?)"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.login,u1_0.password,u1_0.role from userModel u1_0 where upper(u1_0.login)=upper(?) [42001-214]
+2024-12-02 18:04:12 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Невозможно удалить "USER_MODEL", пока существует зависимый объект "FKFRAH2S5LTPT6N0GG18LXFYAOX"
+Cannot drop "USER_MODEL" because "FKFRAH2S5LTPT6N0GG18LXFYAOX" depends on it; SQL statement:
+DROP TABLE USER_MODEL [90107-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:97)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:121)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1589)

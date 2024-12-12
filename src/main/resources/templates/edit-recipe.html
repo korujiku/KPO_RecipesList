@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content_header" th:text="'Редактирование рецепта'"></div>
+<div layout:fragment="content">
+    <form action="#" th:action="@{/recipe/{id}(id=${id})}" th:object="${recipeDto}"
+          enctype="multipart/form-data"
+          method="post">
+        <div class="mb-3">
+            <label for="multipartFile" class="form-label">Фото</label>
+            <input type="file" class="form-control" id="multipartFile"
+                   th:name="multipartFile" />
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="name"
+                   th:field="${recipeDto.name}" />
+        </div>
+        <div class="mb-3">
+            <label for="ingridients" class="form-label">Ингридиенты</label>
+            <input type="text" class="form-control" id="ingridients"
+                   th:field="${recipeDto.ingridients}" />
+        </div>
+        <div class="mb-3">
+            <label for="preparing" class="form-label">Приготовление</label>
+            <input type="text" class="form-control" id="preparing"
+                   th:field="${recipeDto.preparing}" />
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary button-fixed">
+                <span>Обновить</span>
+            </button>
+            <a class="btn btn-secondary button-fixed" th:href="@{/recipe}">
+                Назад
+            </a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content_header" th:text="'Профиль'"></div>
+<div layout:fragment="content">
+    <div id="recipe-info-div" class="justify-content-center bg-light text-dark border border-0 rounded-2 container gap-5 d-flex flex-row">
+        <div class="p-5 text-center">
+            <p id="recipe-name" class="fw-bolder fs-5 ps-2" th:text="${userDto.login}"></p>
+            <table class="table w-50" id="tbl-recipes">
+                <thead>
+                <tr>
+                    <th scope="col">Рецепты пользователя</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item, iterator: ${recipes}">
+                    <td>
+                        <a class="text-primary" th:href="@{/recipe/{id}/page(id=${item.id})}" th:text="${item.name}"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="list-unstyled">
+                <li class="text-decoration-none">
+                    <a type="button" class="m-1 btn btn-secondary text-wrap" th:href="@{/user/profile/{id}/edit(id=${userDto.id})}">
+                        Редактировать профиль
+                    </a>
+                </li>
+                <li>
+                    <a type="button" class="m-1 btn btn-danger"
+                       th:attr="onclick=|confirm('Удалить профиль?') && document.getElementById('remove-${userDto.id}').click()|">
+                        Удалить
+                    </a>
+                    <form th:action="@{/user/profile/delete}" method="post">
+                        <button th:id="'remove-' + ${userDto.id}" type="submit" style="display: none">
+                            Удалить
+                        </button>
+                    </form>
+                </li>
+            </ul>
+            <div class="mb-3">
+                <a class="btn btn-secondary button-fixed" th:href="@{/recipe}">
+                    Назад
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+    <script type="module">
+    </script>
+</th:block>
+</html>

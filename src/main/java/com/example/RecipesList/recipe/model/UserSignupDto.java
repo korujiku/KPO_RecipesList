@@ -8,10 +8,10 @@ public class UserSignupDto {
     @Size(min = 3, max = 64)
     private String login;
     @NotBlank
-    @Size(min = 6, max = 64)
+    @Size(min = 5, max = 64)
     private String password;
     @NotBlank
-    @Size(min = 6, max = 64)
+    @Size(min = 5, max = 64)
     private String passwordConfirm;
 
     public String getLogin() {

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content_header" th:text="'Редактирование данных профиля'"></div>
+<div layout:fragment="content">
+  <form action="#" th:action="@{/user/{id}(id=${id})}" th:object="${userDto}"
+        method="post">
+    <div class="mb-3">
+      <label for="login" class="form-label">Имя</label>
+      <input type="text" class="form-control" id="login"
+             th:field="${userDto.login}" />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Пароль</label>
+      <input type="password" class="form-control" id="password"
+             th:field="${userDto.password}" />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Подтвердите пароль</label>
+      <input type="password" class="form-control" name="passwordConfirm"/>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary button-fixed">
+        <span>Обновить</span>
+      </button>
+      <a class="btn btn-secondary button-fixed" th:href="@{/recipe}">
+        Назад
+      </a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

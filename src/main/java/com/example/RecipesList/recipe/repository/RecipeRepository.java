@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
-    @Query("select r from Recipe r where r.name like CONCAT('%', :search, '%')")
+    @Query("select r from Recipe r where r.name ilike CONCAT('%', :search, '%')")
     List<Recipe> findAll(@Param("search") String search);
 }

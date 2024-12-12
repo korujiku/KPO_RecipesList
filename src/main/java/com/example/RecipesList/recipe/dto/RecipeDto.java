@@ -2,13 +2,16 @@ package com.example.RecipesList.recipe.dto;
 
 import com.example.RecipesList.recipe.model.Recipe;
 
+import java.nio.charset.StandardCharsets;
+
 public class RecipeDto {
     private long id;
     private String name;
     private String ingridients;
     private String preparing;
+    private String image;
     private Long userId;
-    private String user;
+    private String userModel;
 
     public RecipeDto() {}
 
@@ -17,8 +20,9 @@ public class RecipeDto {
         this.name = recipe.getName();
         this.ingridients = recipe.getIngridients();
         this.preparing = recipe.getPreparing();
-        this.userId = recipe.getUser().getId();
-        this.user = recipe.getUser().getLogin();
+        this.image = new String(recipe.getImage(), StandardCharsets.UTF_8);
+        this.userId = recipe.getUserModel().getId();
+        this.userModel = recipe.getUserModel().getLogin();
     }
 
     public Long getUserId(){
@@ -37,6 +41,8 @@ public class RecipeDto {
 
     public String getPreparing(){ return preparing; }
 
+    public String getImage(){ return image; }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -53,11 +59,15 @@ public class RecipeDto {
         this.preparing = preparing;
     }
 
-    public void setUser(String user){
-        this.user = user;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getUser(){
-        return user;
+    public void setUserModel(String user){
+        this.userModel = user;
+    }
+
+    public String getUserModel(){
+        return userModel;
     }
 }
