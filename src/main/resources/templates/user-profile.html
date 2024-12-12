@@ -27,7 +27,7 @@
             </table>
             <ul class="list-unstyled">
                 <li class="text-decoration-none">
-                    <a type="button" class="m-1 btn btn-secondary" th:href="@{/user/profile/{id}/edit(id=${userDto.id})}">
+                    <a type="button" class="m-1 btn btn-secondary text-wrap" th:href="@{/user/profile/{id}/edit(id=${userDto.id})}">
                         Редактировать профиль
                     </a>
                 </li>
@@ -37,7 +37,7 @@
                         Удалить
                     </a>
                     <form th:action="@{/user/profile/delete}" method="post">
-                        <button th:id="'remove-' + ${userDto.login}" type="submit" style="display: none">
+                        <button th:id="'remove-' + ${userDto.id}" type="submit" style="display: none">
                             Удалить
                         </button>
                     </form>

@@ -36,6 +36,15 @@ public class RecipeService {
     }
 
     @Transactional
+    public Recipe addRecipe(Long userId, String recipeName, String recipeIngredients, String recipePreparing, byte[] image) {
+        final Recipe recipe = new Recipe(recipeName, recipeIngredients, recipePreparing, image);
+        final UserModel userModel = userService.findUser(userId);
+        recipe.setUserModel(userModel);
+        validatorUtil.validate(recipe);
+        return recipeRepository.save(recipe);
+    }
+
+    @Transactional
     public Recipe findRecipe(Long id) {
         final Optional<Recipe> recipe = recipeRepository.findById(id);
         return recipe.orElseThrow(() -> new RecipeNotFoundException(id));
@@ -58,6 +67,16 @@ public class RecipeService {
         currentRecipe.setIngridients(recipeDto.getIngridients());
         currentRecipe.setPreparing(recipeDto.getPreparing());
         currentRecipe.setImage(recipeDto.getImage().getBytes());
+        validatorUtil.validate(currentRecipe);
+        return recipeRepository.save(currentRecipe);
+    }
+
+    public Recipe updateRecipe(Long id, String name, String ingredients, String preparing, byte[] image) {
+        final Recipe currentRecipe = findRecipe(id);
+        currentRecipe.setName(name);
+        currentRecipe.setIngridients(ingredients);
+        currentRecipe.setPreparing(preparing);
+        currentRecipe.setImage(image);
         validatorUtil.validate(currentRecipe);
         return recipeRepository.save(currentRecipe);
     }

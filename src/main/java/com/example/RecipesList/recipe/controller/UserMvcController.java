@@ -48,6 +48,7 @@ public class UserMvcController {
 
     @PostMapping(value = "/{id}")
     public String editUser(@PathVariable Long id,
+                           @RequestParam String passwordConfirm,
                            @ModelAttribute @Valid UserDto userDto,
                            BindingResult bindingResult,
                            Model model) {
@@ -55,7 +56,11 @@ public class UserMvcController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "edit-profile";
         }
-        userService.updateUser(id, userDto.getLogin(), userDto.getPassword());
+        if (!userDto.getPassword().equals(passwordConfirm)) {
+            model.addAttribute("error", "New passwords do not match");
+            return "edit-profile";
+        }
+        userService.updateUser(id, userDto.getLogin(), passwordConfirm);
 
         return "redirect:/user/profile";
     }
